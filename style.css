@@ -1,0 +1,65 @@
+.mainDiv {
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.contentWrapper {
+    width: 350px;
+    border: solid 5px gray;
+    border-radius: 10%;
+    padding: 15px;
+    align-items: center;
+}
+
+.mainDiv, .bigButtons, .smallButtons, .buttons, .display, .contentWrapper {
+    display: flex;
+}
+
+.mainDiv, .buttons, .contentWrapper {
+    flex-direction: column;
+}
+
+.bigButtons, .smallButtons, .buttons {
+    justify-content: space-between;
+}
+
+.smallButtons {
+    height: 330px;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.buttons {
+    height: 400px;
+    align-content: space-between;
+}
+
+.buttons, .display {
+    width: 330px;
+}
+
+#backspace, #clear {
+    height: auto;
+    width: auto;
+}
+
+button {
+    height: 80px;
+    width: 80px;
+    font-size: 40px;
+}
+
+.display {
+    justify-content: center;
+}
+
+.display {
+    font-size: 50px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    border: solid 3px black;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
