@@ -40,9 +40,10 @@ function operateValues(displayArray) {
     let operand = displayArray[1];
     let secondValue = displayArray[2];
     let finalValue = operate(firstValue, secondValue, operand);
-    if (displayArray.length == 3) {
-        return finalValue;
-    }
+    //if (displayArray.length <= 4) {
+    //    return finalValue;
+    //}
+    /*
     for (i = 2; i < (displayArray.length - 2); i++) {
         firstValue = finalValue;
         operand = displayArray[i+1];
@@ -50,6 +51,7 @@ function operateValues(displayArray) {
         finalValue = operate(firstValue, secondValue, operand);
         i++;
     }
+    */
     return finalValue;
 }
 
@@ -77,13 +79,14 @@ let solution = 'empty';
 const displayArray = [];
 
 function buttonClicked(id) { 
+    let loopLength = displayArray.length;
     switch (id) {
         //case 'backspace':
         
         //    break;
 
         case 'clear':
-            let loopLength = displayArray.length;
+            loopLength = displayArray.length;
             for (i = 0; i < loopLength; i++) {
                 displayArray.pop();
             }
@@ -135,6 +138,11 @@ function buttonClicked(id) {
                 displayArray.push(display);
             }
             solution = 'empty';
+            if (displayArray.length >= 3) {
+                solution = buttonClicked('autoEqual');
+                displayArray.push(solution);
+                solution = 'empty';
+            }
             displayArray.push('/');
             displaySelector.textContent = convertArray(displayArray);
             display = '';
@@ -183,6 +191,11 @@ function buttonClicked(id) {
                 displayArray.push(display);
             }
             solution = 'empty';
+            if (displayArray.length >= 3) {
+                solution = buttonClicked('autoEqual');
+                displayArray.push(solution);
+                solution = 'empty';
+            }
             displayArray.push('*');
             displaySelector.textContent = convertArray(displayArray);
             display = '';
@@ -219,6 +232,7 @@ function buttonClicked(id) {
             break;
 
         case 'subtract':
+            console.log(displayArray.length);
             if (solution != 'empty') {
                 displayArray.push(solution);
                 display = solution;
@@ -231,6 +245,13 @@ function buttonClicked(id) {
                 displayArray.push(display);
             }
             solution = 'empty';
+            // new code start
+            if (displayArray.length >= 3) {
+                solution = buttonClicked('autoEqual');
+                displayArray.push(solution);
+                solution = 'empty';
+            }
+            // new code end
             displayArray.push('-');
             displaySelector.textContent = convertArray(displayArray);
             display = '';
@@ -258,11 +279,24 @@ function buttonClicked(id) {
             solution = operateValues(displayArray);
             display = solution;
             displaySelector.textContent = solution;
-            let loopsLength = displayArray.length;
-            for (i = 0; i < loopsLength; i++) {
+            loopLength = displayArray.length;
+            for (i = 0; i < loopLength; i++) {
                 displayArray.pop();
             }
             break;
+
+        case 'autoEqual':
+            //if (display == '') {
+            //    return;
+            //}
+            solution = operateValues(displayArray);
+            display = solution;
+            displaySelector.textContent = solution;
+            loopLength = displayArray.length;
+            for (i = 0; i < loopLength; i++) {
+                displayArray.pop();
+            }
+            return solution;
         
         case 'add':
             if (solution != 'empty') {
@@ -279,6 +313,11 @@ function buttonClicked(id) {
                 console.log('display != solution', display);
             }
             solution = 'empty';
+            if (displayArray.length >= 3) {
+                solution = buttonClicked('autoEqual');
+                displayArray.push(solution);
+                solution = 'empty';
+            }
             displayArray.push('+');
             console.log('displayArray', displayArray);
             displaySelector.textContent = convertArray(displayArray);
