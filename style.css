@@ -30,6 +30,27 @@
     align-content: space-between;
 }
 
+#equal {
+    color: blue;
+}
+
+#decimal {
+    color: red;
+}
+
+#add, #subtract, #multiply, #divide {
+    color: green;
+}
+
+#backspace {
+    color: tan;
+    font-weight: 600;
+}
+
+#clear {
+    font-weight: bold;
+}
+
 .buttons {
     height: 400px;
     align-content: space-between;
