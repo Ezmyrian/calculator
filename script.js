@@ -40,6 +40,7 @@ function operateValues(displayArray) {
     let operand = displayArray[1];
     let secondValue = displayArray[2];
     let finalValue = operate(firstValue, secondValue, operand);
+    finalValue = +finalValue.toFixed(2);
     //if (displayArray.length <= 4) {
     //    return finalValue;
     //}
@@ -273,6 +274,7 @@ function buttonClicked(id) {
 
         case 'equal':
             if (display == '') {
+                alert('Please enter a valid math operation')
                 return;
             }
             displayArray.push(display);
