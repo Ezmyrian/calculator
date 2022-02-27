@@ -67,7 +67,7 @@ function buttonClicked(event) {
                 userNumberInput = numberAndOperatorInput.firstNumber;
                 numberAndOperatorInput.firstNumber = '';
             }
-            if (userNumberInput == '') {
+            if (userNumberInput == '' || userNumberInput == '.') {
                 return;
             }
             if (numberAndOperatorInput.firstNumber == '') {
@@ -140,7 +140,7 @@ function buttonClicked(event) {
         case '=':
             if (numberAndOperatorInput.firstNumber == '' || 
                 numberAndOperatorInput.operator == '' ||
-                userNumberInput == '') {
+                userNumberInput == '' || userNumberInput == '.') {
                     return;
             }
             else {
