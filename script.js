@@ -1,16 +1,13 @@
 function addTogether(a, b) {
-    let add = +a + +b;
-    return add;
+    return a + b;
 }
 
 function subtractFrom(a, b) {
-    let subtract = a - b;
-    return subtract;
+    return a - b;
 }
 
 function multiplyBy(a, b) {
-    let multiple = a * b;
-    return multiple;
+    return a * b;
 }
 
 function divideBy(a, b) {
@@ -18,317 +15,157 @@ function divideBy(a, b) {
         alert('Your attempt to divide by 0 has caused a black hole that has devoured the universe and everyone in it.  Please refrain from further universe destruction.');
         return;
     }
-    division = a / b;
-    return division;
+    return a / b; 
 }
 
 function operate(num1, num2, operator) {
-    let solve = (operator == '*') ? multiplyBy(num1, num2)
-        : (operator == '/') ? divideBy(num1, num2)
-        : (operator == '+') ? addTogether(num1, num2)
-        : (operator == '-') ? subtractFrom(num1, num2)
-        : alert('Error in operate function');
-    return solve;
-}
-
-function operateValues(displayArray) {
-    if (displayArray.length < 3) {
-        alert('Please use at least two numbers with a valid operator');
-        return;
-    }
-    let firstValue = displayArray[0];
-    let operand = displayArray[1];
-    let secondValue = displayArray[2];
-    let finalValue = operate(firstValue, secondValue, operand);
-    finalValue = +finalValue.toFixed(2);
-    //if (displayArray.length <= 4) {
-    //    return finalValue;
-    //}
-    /*
-    for (i = 2; i < (displayArray.length - 2); i++) {
-        firstValue = finalValue;
-        operand = displayArray[i+1];
-        secondValue = displayArray[i+2];
-        finalValue = operate(firstValue, secondValue, operand);
-        i++;
-    }
-    */
-    return finalValue;
-}
-
-function convertArray(array) {
-    let arrayString = '';
-    for (i = 0; i < array.length; i++) {
-        arrayString += array[i];
-    }
-    console.log(arrayString);
-    return arrayString;
-}
-
-
-const displaySelector = document.querySelector('.display');
-
-const buttons = document.querySelectorAll('[id]');
-for (i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', function() {
-        buttonClicked(this.id);
-    });
-};
-
-let display = '';
-let solution = 'empty';
-const displayArray = [];
-
-function buttonClicked(id) { 
-    let loopLength = displayArray.length;
-    switch (id) {
-        //case 'backspace':
-        
-        //    break;
-
-        case 'clear':
-            loopLength = displayArray.length;
-            for (i = 0; i < loopLength; i++) {
-                displayArray.pop();
-            }
-            display = '';
-            solution = 'empty';
-            displaySelector.textContent = '0';
-            break;
-
-        case 'seven':
-            display += `7`;
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        case 'eight':
-            display += `8`
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        case 'nine':
-            display += `9`
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        case 'divide':
-            if (solution != 'empty') {
-                displayArray.push(solution);
-                display = solution;
-            }
-            if (display == '') {
-                return;
-            }
-            
-            if (display != solution) {
-                displayArray.push(display);
-            }
-            solution = 'empty';
-            if (displayArray.length >= 3) {
-                solution = buttonClicked('autoEqual');
-                displayArray.push(solution);
-                solution = 'empty';
-            }
-            displayArray.push('/');
-            displaySelector.textContent = convertArray(displayArray);
-            display = '';
-            break;
-
-        case 'four':
-            display += `4`
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        case 'five':
-            display += `5`
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        case 'six':
-            display += `6`
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        case 'multiply':
-            if (solution != 'empty') {
-                displayArray.push(solution);
-                display = solution;
-            }
-            if (display == '') {
-                return;
-            }
-            
-            if (display != solution) {
-                displayArray.push(display);
-            }
-            solution = 'empty';
-            if (displayArray.length >= 3) {
-                solution = buttonClicked('autoEqual');
-                displayArray.push(solution);
-                solution = 'empty';
-            }
-            displayArray.push('*');
-            displaySelector.textContent = convertArray(displayArray);
-            display = '';
-            break;
-
-        case 'one':
-            display += `1`
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        case 'two':
-            display += `2`
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        case 'three':
-            display += `3`
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        case 'subtract':
-            console.log(displayArray.length);
-            if (solution != 'empty') {
-                displayArray.push(solution);
-                display = solution;
-            }
-            if (display == '') {
-                return;
-            }
-            
-            if (display != solution) {
-                displayArray.push(display);
-            }
-            solution = 'empty';
-            // new code start
-            if (displayArray.length >= 3) {
-                solution = buttonClicked('autoEqual');
-                displayArray.push(solution);
-                solution = 'empty';
-            }
-            // new code end
-            displayArray.push('-');
-            displaySelector.textContent = convertArray(displayArray);
-            display = '';
-            break;
-
-        case 'zero':
-            display += `0`
-            if (displayArray.length) {
-                displaySelector.textContent = convertArray(displayArray) + display;
-            }
-            else {
-                displaySelector.textContent = display;
-            }
-            break;
-
-        //case 'decimal':
-
-        //    break;
-
-        case 'equal':
-            if (display == '') {
-                alert('Please enter a valid math operation')
-                return;
-            }
-            displayArray.push(display);
-            solution = operateValues(displayArray);
-            display = solution;
-            displaySelector.textContent = solution;
-            loopLength = displayArray.length;
-            for (i = 0; i < loopLength; i++) {
-                displayArray.pop();
-            }
-            break;
-
-        case 'autoEqual':
-            //if (display == '') {
-            //    return;
-            //}
-            solution = operateValues(displayArray);
-            display = solution;
-            displaySelector.textContent = solution;
-            loopLength = displayArray.length;
-            for (i = 0; i < loopLength; i++) {
-                displayArray.pop();
-            }
-            return solution;
-        
-        case 'add':
-            if (solution != 'empty') {
-                displayArray.push(solution);
-                display = solution;
-                console.log('display != empty', display);
-            }
-            if (display == '') {
-                return;
-            }
-            
-            if (display != solution) {
-                displayArray.push(display);
-                console.log('display != solution', display);
-            }
-            solution = 'empty';
-            if (displayArray.length >= 3) {
-                solution = buttonClicked('autoEqual');
-                displayArray.push(solution);
-                solution = 'empty';
-            }
-            displayArray.push('+');
-            console.log('displayArray', displayArray);
-            displaySelector.textContent = convertArray(displayArray);
-            console.log('displaySelector', displaySelector.textContent);
-            display = '';
-            break;
-
+    switch (operator) {
+        case '*':
+            return multiplyBy(num1, num2);
+        case '/':
+            return divideBy(num1, num2);
+        case '+':
+            return addTogether(num1, num2);
+        case '-':
+            return subtractFrom(num1, num2);
         default:
-            console.log('Error in buttonClicked function: ', id);  
+            alert('Error in operate function');
+            break;
     }
 }
 
+function operateOnValues(numberAndOperatorInput) {
+    let firstValue = Number(numberAndOperatorInput.firstNumber);
+    let secondValue = Number(numberAndOperatorInput.secondNumber);
+    let operand = numberAndOperatorInput.operator;
+    return  Number(operate(firstValue, secondValue, operand).toFixed(2));
+}
+
+const displayValue = document.querySelector('.display');
+const equalButton = document.querySelector('#equal');
+const backspaceButton = document.querySelector('#backspace');
+
+const calcButtons = document.querySelectorAll('.buttons');
+calcButtons.forEach(button => button.addEventListener('click', buttonClicked));
+
+const numberAndOperatorInput = new Object();
+numberAndOperatorInput.firstNumber = '';
+numberAndOperatorInput.operator = '';
+numberAndOperatorInput.secondNumber = '';
+
+let userNumberInput = '';
+
+function buttonClicked(event) { 
+    let eventTarget = event.target.value;
+    let result = 0;
+    switch (eventTarget) {
+        case '+':
+        case '-':
+        case '*': 
+        case '/':
+            if (userNumberInput == '' && numberAndOperatorInput.firstNumber != '') {
+                userNumberInput = numberAndOperatorInput.firstNumber;
+                numberAndOperatorInput.firstNumber = '';
+            }
+            if (userNumberInput == '') {
+                return;
+            }
+            if (numberAndOperatorInput.firstNumber == '') {
+                numberAndOperatorInput.firstNumber = userNumberInput;
+                userNumberInput = '';
+            }
+            if (numberAndOperatorInput.operator == '') {
+                numberAndOperatorInput.operator = eventTarget;
+            }    
+            displayValue.textContent = Object.values(numberAndOperatorInput).join(' ');       
+            if (numberAndOperatorInput.firstNumber == '' || 
+                numberAndOperatorInput.operator == '' ||
+                userNumberInput == '') {
+                    return;
+            }
+            else {
+                let equal = new MouseEvent('click', {bubbles: true});
+                equalButton.dispatchEvent(equal);
+                numberAndOperatorInput.operator = eventTarget;
+            }
+            break;   
+
+        case 'backspace':
+            //when using backspace on an operator, user can then input another number, and then when
+            //clicking an operator, the function evaluates.  Fix this to not allow number input until
+            //another operator is pressed, followed by another number.
+            if (userNumberInput != '') {
+                userNumberInput = userNumberInput.toString().slice(0, -1);
+                if (Object.values(numberAndOperatorInput).every(value => value == '')) {
+                    displayValue.textContent = userNumberInput;
+                }
+                else {
+                    displayValue.textContent = `${numberAndOperatorInput.firstNumber} ${numberAndOperatorInput.operator} ${userNumberInput}`
+                }
+                return;
+            }
+            else if (numberAndOperatorInput.operator != '') {
+                numberAndOperatorInput.operator = '';
+                userNumberInput = numberAndOperatorInput.firstNumber
+                numberAndOperatorInput.firstNumber = '';
+                displayValue.textContent = userNumberInput;
+                return;
+            }
+            else if (userNumberInput == '' && numberAndOperatorInput.operator == '') {
+                userNumberInput = numberAndOperatorInput.firstNumber;
+                numberAndOperatorInput.firstNumber = '';
+                let backspace = new MouseEvent('click', {bubbles: true});
+                backspaceButton.dispatchEvent(backspace);
+            }
+
+            break;
+    
+        case 'clr':
+            displayValue.textContent = '0';
+            numberAndOperatorInput.firstNumber = '';
+            numberAndOperatorInput.secondNumber = '';
+            numberAndOperatorInput.operator = '';
+            userNumberInput = '';
+            break;
+            
+        case '.':
+            if (userNumberInput.includes('.') || displayValue.textContent.includes('.')) {
+                alert('Number already contains a decimal');
+                return;
+            }
+            userNumberInput += '.';
+            displayValue.textContent += '.';
+            break;
+        
+        case '=':
+            if (numberAndOperatorInput.firstNumber == '' || 
+                numberAndOperatorInput.operator == '' ||
+                userNumberInput == '') {
+                    return;
+            }
+            else {
+                numberAndOperatorInput.secondNumber = userNumberInput;
+                result = operateOnValues(numberAndOperatorInput);
+                displayValue.textContent = result;
+                numberAndOperatorInput.firstNumber = result;
+                numberAndOperatorInput.secondNumber = '';
+                numberAndOperatorInput.operator = '';
+                userNumberInput = '';
+            }
+            break;
+            
+        default:
+            if (userNumberInput == '' && numberAndOperatorInput.operator == '' && numberAndOperatorInput.firstNumber != '') {
+                userNumberInput = numberAndOperatorInput.firstNumber;
+                numberAndOperatorInput.firstNumber = '';
+            }
+            userNumberInput += eventTarget;
+            if (Object.values(numberAndOperatorInput).every(value => value == '')) {
+                displayValue.textContent = userNumberInput;
+            }
+            else {
+                displayValue.textContent = `${numberAndOperatorInput.firstNumber} ${numberAndOperatorInput.operator} ${userNumberInput}`
+            }
+            break; 
+    }
+}
