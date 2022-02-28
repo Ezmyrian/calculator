@@ -1,19 +1,15 @@
 const displayValue = document.querySelector('.display');
-const equalButton = document.querySelector('#equal');
-const backspaceButton = document.querySelector('#backspace');
-
 const calcButtons = document.querySelectorAll('.buttons');
 calcButtons.forEach(button => button.addEventListener('click', buttonClicked));
-
 const numberAndOperatorInput = new Object();
 numberAndOperatorInput.firstNumber = '';
 numberAndOperatorInput.operator = '';
 numberAndOperatorInput.secondNumber = '';
 
 let userNumberInput = '';
-//let newOperation = true;
+let newOperation = true;
 
-function operate(num1, num2, operator) {
+function operations(num1, num2, operator) {
     switch (operator) {
         case '*':
             return num1 * num2;
@@ -37,7 +33,7 @@ function operateOnValues(numberAndOperatorInput) {
     let firstValue = Number(numberAndOperatorInput.firstNumber);
     let secondValue = Number(numberAndOperatorInput.secondNumber);
     let operand = numberAndOperatorInput.operator;
-    return  Number(operate(firstValue, secondValue, operand).toFixed(2));
+    return  Number(operations(firstValue, secondValue, operand).toFixed(2));
 }
 
 function buttonClicked(event) { 
@@ -47,7 +43,7 @@ function buttonClicked(event) {
         case '-':
         case '*': 
         case '/':
-            symbol(buttonValue);
+            operate(buttonValue);
             break;   
         case 'backspace':
             backspace();
@@ -67,7 +63,7 @@ function buttonClicked(event) {
     }
 }
 
-function symbol(buttonValue) {
+function operate(operatorSymbol) {
     if (userNumberInput == '' && numberAndOperatorInput.firstNumber != '') {
         userNumberInput = numberAndOperatorInput.firstNumber;
         numberAndOperatorInput.firstNumber = '';
@@ -80,7 +76,7 @@ function symbol(buttonValue) {
         userNumberInput = '';
     }
     if (numberAndOperatorInput.operator == '') {
-        numberAndOperatorInput.operator = buttonValue;
+        numberAndOperatorInput.operator = operatorSymbol;
     }    
     displayValue.textContent = Object.values(numberAndOperatorInput).join(' ');       
     if (numberAndOperatorInput.firstNumber == '' || 
@@ -90,7 +86,7 @@ function symbol(buttonValue) {
     }
     else {
         equal();
-        numberAndOperatorInput.operator = buttonValue;
+        numberAndOperatorInput.operator = operatorSymbol;
     }
 }
 
@@ -137,6 +133,7 @@ function decimal() {
 }
 
 function equal() {
+    let result = 0;
     if (numberAndOperatorInput.firstNumber == '' || 
         numberAndOperatorInput.operator == '' ||
         userNumberInput == '' || userNumberInput == '.') {
@@ -153,12 +150,12 @@ function equal() {
     }
 }
 
-function numberInput(buttonValue) {
+function numberInput(inputNumber) {
     if (userNumberInput == '' && numberAndOperatorInput.operator == '' && numberAndOperatorInput.firstNumber != '') {
         userNumberInput = numberAndOperatorInput.firstNumber;
         numberAndOperatorInput.firstNumber = '';
     }
-    userNumberInput += buttonValue;
+    userNumberInput += inputNumber;
     if (Object.values(numberAndOperatorInput).every(value => value == '')) {
         displayValue.textContent = userNumberInput;
     }
