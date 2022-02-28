@@ -11,3 +11,4 @@ TO DO:
     Change functionality so that when a user clicks the = key if they start by typing a new number the 
 calculator starts a brand new operation instead of continuing with the result of the last calculation.
     Add keyboard support.
+    Add support for negative value input.
