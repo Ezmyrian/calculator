@@ -1,7 +1,20 @@
 let display = document.querySelector('.display');
 let numbers = document.querySelector('.numbers');
-let buttons = numbers.querySelectorAll("button");
-buttons.forEach((button) => button.addEventListener('click', updateDisplay));
+let numberButtons = numbers.querySelectorAll("button");
+numberButtons.forEach((button) => button.addEventListener('click', updateDisplay));
+let middleOperators = document.querySelector('.middle-operators');
+let operators = middleOperators.querySelectorAll('button')
+operators.forEach((button) => button.addEventListener('click', operatorChoice))
+
+let num1 = 0;
+let num2 = 0;
+let operator;
+
+function operatorChoice(e) {
+    operator = e.target.textContent;
+    num1 = display.textContent;
+    display.textContent = '';
+}
 
 function updateDisplay(e) {
     display.textContent += e.target.textContent;
