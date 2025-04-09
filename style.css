@@ -13,6 +13,7 @@ html {
 
 html, 
 body,
+.display,
 .button-container,
 .numbers,
 .row1,
@@ -20,7 +21,8 @@ body,
 .row3,
 .row4,
 .operators,
-.lower-operators,
+.middle-operators,
+.equal,
 .operator-column1,
 .operator-column2, 
 .delete {
@@ -61,6 +63,9 @@ body,
     min-height: 80px;
     border: 2px solid black;
     margin: 5px;
+    font-size: 50px;
+    align-items: center;
+    justify-content: end;
 }
 
 button {
@@ -75,12 +80,4 @@ button {
     font-size: 25px;
     padding: 13px;
     flex-grow: 1;
-}
-
-#clear {
-    font-size: 30px;
-}
-
-#equals {
-    flex: 2.5;
 }
