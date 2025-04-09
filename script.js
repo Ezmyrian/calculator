@@ -2,9 +2,16 @@ let display = document.querySelector('.display');
 let numbers = document.querySelector('.numbers');
 let numberButtons = numbers.querySelectorAll("button");
 numberButtons.forEach((button) => button.addEventListener('click', updateDisplay));
+
 let middleOperators = document.querySelector('.middle-operators');
 let operators = middleOperators.querySelectorAll('button')
 operators.forEach((button) => button.addEventListener('click', operatorChoice))
+
+let equals = document.querySelector('#equals');
+equals.addEventListener('click', () => {
+    num2 = display.textContent;
+    operate(num1, num2, operator);
+})
 
 let num1 = 0;
 let num2 = 0;
