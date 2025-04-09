@@ -48,13 +48,17 @@ function divide(num1, num2) {
 function operate(num1, num2, operator) {
     switch (operator) {
         case '+':
-            display.textContent = add(num1, num2);
+            display.textContent = add(+num1, +num2);
+            break;
         case '-':
-            display.textContent = subtract(num1, num2);
+            display.textContent = subtract(+num1, +num2);
+            break;
         case '*':
-            display.textContent = multiply(num1, num2);
+            display.textContent = multiply(+num1, +num2);
+            break;
         case '/':
-            display.textContent = divide(num1, num2);
+            display.textContent = divide(+num1, +num2);
+            break;
         default: alert('Error in operate function');
     }
 }
