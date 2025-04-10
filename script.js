@@ -15,18 +15,22 @@ equals.addEventListener('click', () => {
 
 let clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', () => {
-    num1 = 0;
-    num2 = 0;
+    num1 = '';
+    num2 = '';
     operator = '';
     display.textContent = '';
 })
 
 
-let num1 = 0;
-let num2 = 0;
+let num1 = '';
+let num2 = '';
 let operator = '';
 
 function operatorChoice(e) {
+    if (num1 == '') {
+        alert('You must enter a number first');
+        return;
+    }
     if (operator != '') {
         num2 = display.textContent;
         operate(num1, num2, operator);
