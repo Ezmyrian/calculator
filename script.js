@@ -27,6 +27,7 @@ let num2 = '';
 let operator = '';
 
 function operatorChoice(e) {
+    if (num1 == '' && display.textContent != '') num1 = display.textContent;
     if (num1 == '') {
         alert('You must enter a number first');
         return;
