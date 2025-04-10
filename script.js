@@ -24,9 +24,13 @@ clearButton.addEventListener('click', () => {
 
 let num1 = 0;
 let num2 = 0;
-let operator;
+let operator = '';
 
 function operatorChoice(e) {
+    if (operator != '') {
+        num2 = display.textContent;
+        operate(num1, num2, operator);
+    }
     operator = e.target.textContent;
     num1 = display.textContent;
     display.textContent = '';
