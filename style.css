@@ -14,7 +14,9 @@ html {
 
 html, 
 body,
+.sub-display,
 .display,
+.display-container,
 .button-container,
 .numbers,
 .row1,
@@ -43,6 +45,7 @@ body,
     width: 150px;
 }
 
+.display-container,
 .numbers,
 .operators,
 .operator-column1,
@@ -60,10 +63,18 @@ body,
     flex-grow: 1;
 }
 
-.display {
+.display-container {
     min-height: 80px;
     border: 2px solid black;
     margin: 5px;
+}
+.sub-display {
+    min-height: 30px;
+    font-size: 25px;
+    justify-content: end;
+}
+
+.display {
     font-size: 40px;
     align-items: end;
     justify-content: end;
