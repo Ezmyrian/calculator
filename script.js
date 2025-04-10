@@ -1,6 +1,7 @@
 let display = document.querySelector('.display');
 let numbers = document.querySelector('.numbers');
-let numberButtons = numbers.querySelectorAll("button");
+let numberButtons = Array.from(numbers.querySelectorAll("button")).filter((button) => button.id != 'clear' && button.id != 'decimal');
+console.log(numberButtons)
 numberButtons.forEach((button) => button.addEventListener('click', updateDisplay));
 
 let middleOperators = document.querySelector('.middle-operators');
@@ -12,6 +13,14 @@ equals.addEventListener('click', () => {
     num2 = display.textContent;
     operate(num1, num2, operator);
 })
+
+let clearButton = document.querySelector('#clear');
+clearButton.addEventListener('click', () => {
+    num1 = 0;
+    num2 = 0;
+    operator = '';
+})
+
 
 let num1 = 0;
 let num2 = 0;
