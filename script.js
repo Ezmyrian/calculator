@@ -16,7 +16,7 @@ equals.addEventListener('click', () => {
     num1 = '';
     num2 = '';
     operator = '';
-    subDisplay.textContent = '';
+    subDisplay.textContent = ' ';
 })
 
 let clearButton = document.querySelector('#clear');
@@ -55,6 +55,7 @@ function operatorChoice(e) {
 }
 
 function updateDisplay(e) {
+    if (subDisplay.textContent == ' ') display.textContent = '';
     display.textContent += e.target.textContent;
 }
 
