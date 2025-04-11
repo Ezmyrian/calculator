@@ -72,7 +72,7 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     if (num2 == 0) return alert('Nice try, but dividing by zero would destroy the universe...Thanos.');
-    return num1 / num2;
+    return (num1 / num2).toFixed(2);
 }
 
 function operate(num1, num2, operator) {
