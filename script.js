@@ -11,6 +11,7 @@ operators.forEach((button) => button.addEventListener('click', operatorChoice))
 let equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
     num2 = display.textContent;
+    if (num1 == '' || num2 == '') return;
     operate(num1, num2, operator);
     num1 = '';
     num2 = '';
