@@ -1,4 +1,5 @@
 let display = document.querySelector('.display');
+let subDisplay = document.querySelector('.sub-display');
 let numbers = document.querySelector('.numbers');
 let numberButtons = Array.from(numbers.querySelectorAll("button")).filter((button) => button.id != 'clear' && button.id != 'decimal');
 numberButtons.forEach((button) => button.addEventListener('click', updateDisplay));
@@ -11,6 +12,10 @@ let equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
     num2 = display.textContent;
     operate(num1, num2, operator);
+    num1 = '';
+    num2 = '';
+    operator = '';
+    subDisplay.textContent = '';
 })
 
 let clearButton = document.querySelector('#clear');
@@ -19,6 +24,7 @@ clearButton.addEventListener('click', () => {
     num2 = '';
     operator = '';
     display.textContent = '';
+    subDisplay.textContent = '';
 })
 
 
@@ -34,10 +40,16 @@ function operatorChoice(e) {
     }
     if (operator != '') {
         num2 = display.textContent;
+        if (num2 == '') {
+            operator = e.target.textContent;
+            subDisplay.textContent = `${num1} ${operator}`;
+            return;
+        }
         operate(num1, num2, operator);
     }
     operator = e.target.textContent;
     num1 = display.textContent;
+    subDisplay.textContent = `${num1} ${operator}`;
     display.textContent = '';
 }
 
