@@ -7,22 +7,6 @@ numberButtons.forEach((button) => button.addEventListener('click', () => {
     updateDisplay(button.textContent)
 }));
 
-document.addEventListener('keydown', (e) => {
-    let key = e.key;
-    let numbersAndOperators = [
-        '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 
-        '.', '-', '+', '*', '/', '=', 'Enter', 'Backspace'
-    ];
-    let index = numbersAndOperators.indexOf(key)
-    if (!(numbersAndOperators.includes(key))) return;
-    if (index <= 9) updateDisplay(key);
-    if (index === 10) hasDecimal();
-    if (index > 10 && index < 15) operatorChoice(key);
-    if (index >= 15 && index < 17) total();
-    if (index === 17) deleteLast();
-})
-
-
 let middleOperators = document.querySelector('.middle-operators');
 let operators = middleOperators.querySelectorAll('button')
 operators.forEach((button) => button.addEventListener('click', () => {
@@ -66,7 +50,6 @@ clearButton.addEventListener('click', () => {
     subDisplay.textContent = '';
 })
 
-
 let num1 = '';
 let num2 = '';
 let operator = '';
@@ -99,7 +82,6 @@ function updateDisplay(numberAsString) {
     }
     display.textContent += numberAsString;
 }
-
 
 function add(num1, num2) {
     return (num1 + num2).toFixed(2);
