@@ -4,15 +4,32 @@ let numbers = document.querySelector('.numbers');
 let numberButtons = Array.from(numbers.querySelectorAll("button")).filter((button) => button.id != 'clear' && button.id != 'decimal');
 numberButtons.forEach((button) => button.addEventListener('click', updateDisplay));
 
+document.addEventListener('keydown', (e) => {
+    let key = e.key;
+    let numbersAndOperators = [
+        '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 
+        '.', '-', '+', '*', '/', '=', 'Backspace', 'Enter'
+    ];
+    if (!(numbersAndOperators.includes(key))) return;
+    if (numbersAndOperators.indexOf(key) <= 9) {
+        display.textContent += key;
+    }
+
+
+})
+
+
 let middleOperators = document.querySelector('.middle-operators');
 let operators = middleOperators.querySelectorAll('button')
 operators.forEach((button) => button.addEventListener('click', operatorChoice))
 
 let decimal = document.querySelector('#decimal');
-decimal.addEventListener('click', () => {
+decimal.addEventListener('click', hasDecimal)
+
+function hasDecimal() {
     if (display.textContent.includes('.')) return;
     display.textContent += '.';
-})
+}
 
 let backspace = document.querySelector('#backspace');
 backspace.addEventListener('click', () => {
