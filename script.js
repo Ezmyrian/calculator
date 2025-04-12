@@ -1,7 +1,8 @@
 let display = document.querySelector('.display');
 let subDisplay = document.querySelector('.sub-display');
 let numbers = document.querySelector('.numbers');
-let numberButtons = Array.from(numbers.querySelectorAll("button")).filter((button) => button.id != 'clear' && button.id != 'decimal');
+let numberButtons = Array.from(numbers.querySelectorAll("button"))
+    .filter((button) => button.id != 'clear' && button.id != 'decimal');
 numberButtons.forEach((button) => button.addEventListener('click', updateDisplay));
 
 document.addEventListener('keydown', (e) => {
