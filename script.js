@@ -3,7 +3,9 @@ let subDisplay = document.querySelector('.sub-display');
 let numbers = document.querySelector('.numbers');
 let numberButtons = Array.from(numbers.querySelectorAll("button"))
     .filter((button) => button.id != 'clear' && button.id != 'decimal');
-numberButtons.forEach((button) => button.addEventListener('click', updateDisplay));
+numberButtons.forEach((button) => button.addEventListener('click', () => {
+    updateDisplay(button.textContent)
+}));
 
 document.addEventListener('keydown', (e) => {
     let key = e.key;
@@ -83,9 +85,9 @@ function operatorChoice(e) {
     display.textContent = '';
 }
 
-function updateDisplay(e) {
+function updateDisplay(numberAsString) {
     if (subDisplay.textContent == ' ') display.textContent = '';
-    display.textContent += e.target.textContent;
+    display.textContent += numberAsString;
 }
 
 
