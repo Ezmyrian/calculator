@@ -18,9 +18,8 @@ document.addEventListener('keydown', (e) => {
     if (index <= 9) updateDisplay(key);
     if (index === 10) hasDecimal();
     if (index > 10 && index < 15) operatorChoice(key);
-    if (index >= 15 && index < 17) equals
-
-
+    if (index >= 15 && index < 17) total();
+    if (index === 17) deleteLast();
 })
 
 
@@ -39,9 +38,11 @@ function hasDecimal() {
 }
 
 let backspace = document.querySelector('#backspace');
-backspace.addEventListener('click', () => {
+backspace.addEventListener('click', deleteLast);
+
+function deleteLast() {
     display.textContent = display.textContent.slice(0, -1)
-});
+}
 
 let equals = document.querySelector('#equals');
 equals.addEventListener('click', total)
