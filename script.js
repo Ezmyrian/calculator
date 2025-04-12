@@ -14,6 +14,11 @@ decimal.addEventListener('click', () => {
     display.textContent += '.';
 })
 
+let backspace = document.querySelector('#backspace');
+backspace.addEventListener('click', () => {
+    display.textContent = display.textContent.slice(0, -1)
+});
+
 let equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
     num2 = display.textContent;
