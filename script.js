@@ -11,12 +11,13 @@ document.addEventListener('keydown', (e) => {
     let key = e.key;
     let numbersAndOperators = [
         '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 
-        '.', '-', '+', '*', '/', '=', 'Backspace', 'Enter'
+        '.', '-', '+', '*', '/', '=', 'Enter', 'Backspace'
     ];
+    let index = numbersAndOperators.indexOf(key)
     if (!(numbersAndOperators.includes(key))) return;
-    if (numbersAndOperators.indexOf(key) <= 9) {
-        display.textContent += key;
-    }
+    if (index <= 9) updateDisplay(key);
+    if (index === 10) hasDecimal();
+    if (index > 10 && index < 15) operatorChoice(key);
 
 
 })
@@ -24,7 +25,9 @@ document.addEventListener('keydown', (e) => {
 
 let middleOperators = document.querySelector('.middle-operators');
 let operators = middleOperators.querySelectorAll('button')
-operators.forEach((button) => button.addEventListener('click', operatorChoice))
+operators.forEach((button) => button.addEventListener('click', () => {
+    operatorChoice(button.textContent)
+}));
 
 let decimal = document.querySelector('#decimal');
 decimal.addEventListener('click', hasDecimal)
@@ -64,7 +67,7 @@ let num1 = '';
 let num2 = '';
 let operator = '';
 
-function operatorChoice(e) {
+function operatorChoice(key) {
     if (num1 == '' && display.textContent != '') num1 = display.textContent;
     if (num1 == '') {
         alert('You must enter a number first');
@@ -73,13 +76,13 @@ function operatorChoice(e) {
     if (operator != '') {
         num2 = display.textContent;
         if (num2 == '') {
-            operator = e.target.textContent;
+            operator = key;
             subDisplay.textContent = `${num1} ${operator}`;
             return;
         }
         operate(num1, num2, operator);
     }
-    operator = e.target.textContent;
+    operator = key;
     num1 = display.textContent;
     subDisplay.textContent = `${num1} ${operator}`;
     display.textContent = '';
