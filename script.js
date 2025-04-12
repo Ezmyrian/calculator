@@ -8,6 +8,12 @@ let middleOperators = document.querySelector('.middle-operators');
 let operators = middleOperators.querySelectorAll('button')
 operators.forEach((button) => button.addEventListener('click', operatorChoice))
 
+let decimal = document.querySelector('#decimal');
+decimal.addEventListener('click', () => {
+    if (display.textContent.includes('.')) return;
+    display.textContent += '.';
+})
+
 let equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
     num2 = display.textContent;
