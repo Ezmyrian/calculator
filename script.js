@@ -93,7 +93,10 @@ function operatorChoice(key) {
 }
 
 function updateDisplay(numberAsString) {
-    if (subDisplay.textContent == ' ') display.textContent = '';
+    if (subDisplay.textContent == ' ') {
+        display.textContent = '';
+        subDisplay.textContent = '';
+    }
     display.textContent += numberAsString;
 }
 
