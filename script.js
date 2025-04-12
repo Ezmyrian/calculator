@@ -18,6 +18,7 @@ document.addEventListener('keydown', (e) => {
     if (index <= 9) updateDisplay(key);
     if (index === 10) hasDecimal();
     if (index > 10 && index < 15) operatorChoice(key);
+    if (index >= 15 && index < 17) equals
 
 
 })
@@ -43,7 +44,9 @@ backspace.addEventListener('click', () => {
 });
 
 let equals = document.querySelector('#equals');
-equals.addEventListener('click', () => {
+equals.addEventListener('click', total)
+
+function total() {
     num2 = display.textContent;
     if (num1 == '' || num2 == '') return;
     operate(num1, num2, operator);
@@ -51,7 +54,7 @@ equals.addEventListener('click', () => {
     num2 = '';
     operator = '';
     subDisplay.textContent = ' ';
-})
+}
 
 let clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', () => {
